@@ -11,6 +11,9 @@ import {
 } from "react-router-dom";
 import BookingCreator from "./bookingCreator";
 
+const json = require('../config/conf.json');
+
+const BASE_URL = json.BASE_URL.prod // change to local if needed
 
 export default class Bookings extends Component {
     constructor() {
@@ -24,7 +27,7 @@ export default class Bookings extends Component {
     }
 
     getBookings() {
-        axios.get(`http://localhost:8000/api/bookings`).then(bookings => {
+        axios.get(BASE_URL + '/api/bookings').then(bookings => {
             this.setState({bookings: bookings.data})
             console.log(this.state.bookings.endDate);
         })

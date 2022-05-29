@@ -1,0 +1,6 @@
+{
+  "BASE_URL": {
+    "local" : "localhost:8000",
+    "prod" : "https://super-bookings-app.herokuapp.com/"
+  }
+}

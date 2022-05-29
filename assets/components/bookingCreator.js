@@ -3,7 +3,10 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from 'sweetalert2';
 import axios from "axios";
-import {FormControlLabel, RadioGroup} from "@material-ui/core";
+
+const json = require('../config/conf.json');
+
+const BASE_URL = json.BASE_URL.prod // change to local if needed
 
 export default class BookingCreator extends Component {
     constructor(props) {
@@ -57,12 +60,16 @@ export default class BookingCreator extends Component {
         });
     };
 
-    getRoomTypeToDisplay (roomType) {
+    getRoomTypeToDisplay(roomType) {
         switch (roomType) {
-            case 'Single': return 'Individual';
-            case 'Double': return 'Doble';
-            case 'Triple': return 'Triple';
-            case 'Quadruple': return 'Cuádruple';
+            case 'Single':
+                return 'Individual';
+            case 'Double':
+                return 'Doble';
+            case 'Triple':
+                return 'Triple';
+            case 'Quadruple':
+                return 'Cuádruple';
         }
     }
 
@@ -114,7 +121,7 @@ export default class BookingCreator extends Component {
         let roomTypes = ['QUADRUPLE', 'TRIPLE', 'DOUBLE', 'SINGLE'];
         let promises = []
         while (i < 5 - this.state.numGuests) {
-            promises.push(axios.get('http://localhost:8000/api/rooms-available?startDate=' +
+            promises.push(axios.get(BASE_URL + '/api/rooms-available?startDate=' +
                 '' + startDateString +
                 '&endDate=' + endDateString +
                 '&roomType=' + roomTypes[i]).then(rooms => {
@@ -162,7 +169,7 @@ export default class BookingCreator extends Component {
         this.setState({
             roomType: roomType
         })
-        axios.get('http://localhost:8000/api/bookings/price?startDate=' +
+        axios.get(BASE_URL + '/api/bookings/price?startDate=' +
             '' + startDateString +
             '&endDate=' + endDateString +
             '&roomType=' + roomType).then(prices => {
@@ -219,7 +226,7 @@ export default class BookingCreator extends Component {
             return;
         }
 
-        axios.post('http://localhost:8000/api/bookings', {
+        axios.post(BASE_URL + '/api/bookings', {
             startDate: this.state.startDate,
             endDate: this.state.endDate,
             roomType: this.state.roomType,
@@ -232,7 +239,7 @@ export default class BookingCreator extends Component {
             .then(function (response) {
                 new Swal("Genial!", ", Se ha creado la reserva correctamente.", "success").then(() =>
                     document.location.href = '../'
-            );
+                );
             })
             .catch(function (error) {
                 console.log(error);
@@ -338,7 +345,13 @@ export default class BookingCreator extends Component {
                 <p id="phoneCheck"></p>
                 <button className="btn btn-primary"
                         id="createBooking"
-                        style={{position: "relative", float: "right", right: "15px", top: "-40px", visibility: "hidden"}}
+                        style={{
+                            position: "relative",
+                            float: "right",
+                            right: "15px",
+                            top: "-40px",
+                            visibility: "hidden"
+                        }}
                         onClick={this.createBooking.bind(this)}
                 >Crear reserva
                 </button>
