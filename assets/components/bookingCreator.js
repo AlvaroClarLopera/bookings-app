@@ -35,7 +35,6 @@ export default class BookingCreator extends Component {
         }
 
         if (date < Date.now) {
-            console.log("pollaaaa");
         }
 
         this.setState({
@@ -52,7 +51,6 @@ export default class BookingCreator extends Component {
         }
 
         if (date < Date.now) {
-            console.log("pollaaaa");
         }
 
         this.setState({
