@@ -1,0 +1,108 @@
+
+/* .App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+.booking-body {
+    border-radius: 25px;
+    padding: 20px;
+    background-color: #7cc9fc;
+}
+
+.booking-locator {
+    border-radius: 10px;
+    top: 5px;
+    padding: 5px;
+    background-color: #c5e5fa;
+}
+
+.new-booking-form {
+    width: 800px;
+    border-radius: 25px;
+    padding: 20px;
+    margin:0 auto;
+    background-color: #7cc9fc;
+}
+
+#name {
+    width: 300px;
+}
+
+#email {
+    width: 300px;
+}
+
+#phone {
+    width: 300px;
+}
+
+#nameL {
+    width: 200px;
+}
+
+#emailL {
+    width: 200px;
+}
+
+#phoneL {
+    width: 200px;
+}
+
+#show-available-rooms {
+    position: relative;
+    right: -360px;
+    top: 5px;
+}
+
+span {
+    display: inline-block;
+    width: 250px;
+}
+
+span#name {
+    width: 500px;
+}
+
+span#email {
+    width: 550px;
+}
+
+span#phone {
+    width: 500px;
+}

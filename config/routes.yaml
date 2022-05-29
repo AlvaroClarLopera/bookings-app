@@ -1,0 +1,33 @@
+health-check:
+  path: /health
+  controller: App\Controller\HealthCheckGetController
+
+bookings-list:
+  path: /{reactRouting}
+  defaults: {reactRouting: null}
+  controller: App\Controller\DefaultController::index
+
+bookings-create:
+  path: /bookings/{reactRouting}
+  defaults: { reactRouting: null }
+  controller: App\Controller\DefaultController::index
+
+bookings-get:
+  path: /api/bookings
+  methods: [GET]
+  controller: App\Controller\BookingsGetController
+
+bookings-post:
+  path: /api/bookings
+  methods: [POST]
+  controller: App\Controller\BookingsPostController
+
+rooms-available-get:
+  path: /api/rooms-available
+  methods: [GET]
+  controller: App\Controller\RoomsAvailableGetController
+
+bookings-price-get:
+  path: /api/bookings/price
+  methods: [GET]
+  controller: App\Controller\BookingsPriceGetController
