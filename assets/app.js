@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import BookingsList from './components/BookingsList';
+import BookingsList from './components/bookingsList';
 import {BrowserRouter, Routes, Route, Redirect, Navigate} from "react-router-dom";
 import BookingCreator from "./components/bookingCreator";
 
