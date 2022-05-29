@@ -1,4 +1,7 @@
 {
+    "engines": {
+        "node": "12.x"
+    },
     "devDependencies": {
         "@babel/preset-react": "^7.17.12",
         "@hotwired/stimulus": "^3.0.0",
