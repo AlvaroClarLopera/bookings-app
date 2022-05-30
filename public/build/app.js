@@ -882,7 +882,7 @@ __webpack_require__.r(__webpack_exports__);
   \*********************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"BASE_URL":{"local":"localhost:8000","prod":"https://super-bookings-app.herokuapp.com"}}');
+module.exports = JSON.parse('{"BASE_URL":{"local":"http://localhost:8000","prod":"https://super-bookings-app.herokuapp.com"}}');
 
 /***/ })
 
