@@ -21,6 +21,6 @@ class RoomsAvailableGetController
         $endDate = new \DateTime($request->get('endDate'));
         $roomType = $request->get('roomType');
 
-        return new JsonResponse(['rooms_available' => ($this->useCase->getAmountRoomsAvailable($startDate, $endDate, $roomType))]);
+        return new JsonResponse(['rooms_available' => ($this->useCase->getAmountRoomsAvailable($startDate, $endDate, $roomType)), 'roomType' => $roomType]);
     }
 }

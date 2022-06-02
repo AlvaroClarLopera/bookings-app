@@ -13,7 +13,7 @@ import BookingCreator from "./bookingCreator";
 
 const json = require('../config/conf.json');
 
-const BASE_URL = json.BASE_URL.prod // change to local if needed
+const BASE_URL = json.BASE_URL.local // change to local if needed
 
 export default class Bookings extends Component {
     constructor() {

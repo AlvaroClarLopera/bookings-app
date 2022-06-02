@@ -6,7 +6,7 @@ import axios from "axios";
 
 const json = require('../config/conf.json');
 
-const BASE_URL = json.BASE_URL.prod // change to local if needed
+const BASE_URL = json.BASE_URL.local // change to local if needed
 
 export default class BookingCreator extends Component {
     constructor(props) {
@@ -94,6 +94,7 @@ export default class BookingCreator extends Component {
         document.getElementById("roomsAvailableTitle").style.visibility = "hidden";
 
         while (i < 4) {
+            document.getElementById(roomTypes[i].toLowerCase()).disabled = false;
             document.getElementById(roomTypes[i].toLowerCase()).style.visibility = "hidden";
             document.getElementById(roomTypes[i].toLowerCase() + "L").style.visibility = "hidden";
             document.getElementById(roomTypes[i].toLowerCase() + "L").innerText = this.getRoomTypeToDisplay(roomTypes[i]) + ": ";
@@ -123,17 +124,30 @@ export default class BookingCreator extends Component {
                 '' + startDateString +
                 '&endDate=' + endDateString +
                 '&roomType=' + roomTypes[i]).then(rooms => {
-                this.state.rooms.push(rooms.data.rooms_available);
+                this.state.rooms.push([rooms.data.rooms_available, rooms.data.roomType]);
                 this.setState({rooms: this.state.rooms});
             }));
             i = i + 1;
         }
         Promise.all(promises).then((room) => {
             i = 0
+            let roomType = '';
+
             while (i < 5 - this.state.numGuests) {
-                document.getElementById(roomTypes[i].toLowerCase()).style.visibility = "visible";
-                document.getElementById(roomTypes[i].toLowerCase() + "L").style.visibility = "visible";
-                document.getElementById(roomTypes[i].toLowerCase() + "L").innerHTML += this.state.rooms[i] + " habitaciones disponibles";
+                switch (this.state.rooms[i][1]) {
+                    case 'SINGLE': roomType = 'single'; break;
+                    case 'DOUBLE': roomType = 'double'; break;
+                    case 'TRIPLE': roomType = 'triple'; break;
+                    case 'QUADRUPLE': roomType = 'quadruple'; break;
+                }
+
+                if (this.state.rooms[i][0] === 0) {
+                    document.getElementById(roomType).disabled = true;
+                }
+
+                document.getElementById(roomType).style.visibility = "visible";
+                document.getElementById(roomType + "L").style.visibility = "visible";
+                document.getElementById(roomType + "L").innerHTML += this.state.rooms[i][0] + " habitaciones disponibles";
                 i = i + 1;
             }
 
